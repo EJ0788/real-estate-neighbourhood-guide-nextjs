@@ -18,12 +18,12 @@ export default function HomePage() {
       <section
         className="relative min-h-[85svh] flex flex-col justify-center"
         style={{
-          background: `linear-gradient(158deg, #091510 0%, #1B3A2D 45%, #243D2F 70%, #0E1E15 100%)`,
+          backgroundImage: 'url(/images/downtownsquamish.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       >
-        {/* Swap background-image in for real photo: */}
-        {/* style={{ backgroundImage: 'url(/images/hero-squamish.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }} */}
-        <div className="absolute inset-0 bg-[rgba(9,21,16,0.5)]" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[rgba(9,21,16,0.65)]" aria-hidden="true" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(201,168,76,0.07)_0%,transparent_55%)]" aria-hidden="true" />
 
         <div className="relative z-10 mx-auto max-w-6xl px-5 py-20 md:py-28 text-center">
