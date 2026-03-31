@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { config } from '@/config/client'
 import { neighbourhoods } from '@/data/neighbourhoods'
 
-const SUBMIT_URL = process.env.NEXT_PUBLIC_SUBMIT_URL ?? ''
+const SUBMIT_URL = config.submitUrl
 
 interface Props {
   headline?: string

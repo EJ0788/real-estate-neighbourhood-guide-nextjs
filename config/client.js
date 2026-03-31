@@ -13,7 +13,7 @@ export const config = {
   brokerageLogo: '/images/ev-logo.png',
 
   // Site
-  siteTitle: 'Squamish Neighbourhood Guide',
+  siteTitle: 'Squamish Neighbourhood Guide — Prices, Schools & Commutes | Corridor Homes',
   city: 'Squamish',
   province: 'BC',
   metaDescription:
@@ -23,6 +23,9 @@ export const config = {
   primaryColour: '#1B3A2D',
   accentColour: '#C9A84C',
   backgroundColour: '#FAF8F5',
+
+  // API
+  submitUrl: 'https://squamish-neighbourhoods-guide.vercel.app/api/submit-lead',
 
   // Lead capture
   formHeadline: 'Get New Listings in Your Preferred Neighbourhood',

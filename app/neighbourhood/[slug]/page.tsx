@@ -31,7 +31,7 @@ export default async function NeighbourhoodPage({ params }: { params: Promise<{ 
     <>
       {/* ── HERO ── */}
       <section
-        className="relative py-20 md:py-28"
+        className="relative py-14 md:py-20 lg:py-28"
         style={{ background: 'linear-gradient(158deg, #091510 0%, #1B3A2D 55%, #243D2F 100%)' }}
       >
         <div className="absolute inset-0 bg-[rgba(9,21,16,0.35)]" aria-hidden="true" />
@@ -71,7 +71,7 @@ export default async function NeighbourhoodPage({ params }: { params: Promise<{ 
 
       {/* ── STATS ROW ── */}
       <div className="bg-forest">
-        <div className="mx-auto max-w-6xl px-5 py-4 flex flex-wrap gap-x-10 gap-y-2">
+        <div className="mx-auto max-w-6xl px-5 py-4 flex flex-wrap gap-x-4 sm:gap-x-10 gap-y-2">
           <Stat label="Price Range" value={n.priceRange} />
           <Stat label="Vancouver Commute" value={n.commute.vancouver} />
           <Stat label="Whistler Commute" value={n.commute.whistler} />
@@ -83,7 +83,7 @@ export default async function NeighbourhoodPage({ params }: { params: Promise<{ 
 
       {/* ── MAIN CONTENT ── */}
       <div className="mx-auto max-w-6xl px-5 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
 
           {/* Left column — main info */}
           <div className="lg:col-span-2 flex flex-col gap-12">
@@ -92,7 +92,7 @@ export default async function NeighbourhoodPage({ params }: { params: Promise<{ 
             <div>
               <SectionLabel>At a Glance</SectionLabel>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div className="bg-white border border-forest/10 rounded-sm p-6">
+                <div className="bg-white border border-forest/10 rounded-sm p-4 sm:p-6">
                   <h3 className="font-display text-base font-semibold text-forest mb-4 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-forest flex items-center justify-center text-white text-[10px]">✓</span>
                     Pros
@@ -106,7 +106,7 @@ export default async function NeighbourhoodPage({ params }: { params: Promise<{ 
                     ))}
                   </ul>
                 </div>
-                <div className="bg-white border border-forest/10 rounded-sm p-6">
+                <div className="bg-white border border-forest/10 rounded-sm p-4 sm:p-6">
                   <h3 className="font-display text-base font-semibold text-forest mb-4 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-muted/30 flex items-center justify-center text-muted text-[10px]">–</span>
                     Cons

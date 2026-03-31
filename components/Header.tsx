@@ -69,7 +69,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-forest-dark border-t border-white/10 px-5 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-forest-dark border-t border-white/10 px-5 py-4 flex flex-col gap-3 max-h-[calc(100svh-64px)] overflow-y-auto">
           {navLinks.map((link) =>
             link.external ? (
               <a

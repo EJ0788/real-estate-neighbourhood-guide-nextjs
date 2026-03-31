@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Squamish Neighbourhood Guide 2026 | CorridorHomes.ca</title>
+  <!--
+  ================================================================
+  CORRIDORHOMES.CA — SQUAMISH NEIGHBOURHOOD GUIDE
+  Version A: Ad Traffic (minimal header — no full nav)
+
+  SETUP CHECKLIST:
+  1. Add agent photo — see comment in agent section
+  2. Test form submission before going live
+  ================================================================
+  -->
+
+  <style>
+    /* ── GOOGLE FONTS ────────────────────────────────────────── */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+    /* ── LOFTY HEADER SUPPRESSION ────────────────────────────── */
+    body > header,
+    .lofty-header,
+    [class*="site-header"],
+    [class*="navbar"] { display: none !important; }
+
+    /* ── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: #FAF8F5;
+      color: #1A1A1A;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --green:      #1B3A2D;
+      --green-dark: #142D22;
+      --gold:       #C9A84C;
+      --gold-hover: #B8962E;
+      --bg:         #FAF8F5;
+      --text:       #1A1A1A;
+      --muted:      #5A5A5A;
+      --white:      #FFFFFF;
+      --border:     rgba(27, 58, 45, 0.10);
+    }
+
+    /* ── HEADER ─────────────────────────────────────────────── */
+    .ch-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 58px;
+      background: rgba(20, 45, 34, 0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .ch-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #FAF8F5;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .ch-logo span { color: var(--gold); }
+
+    .ch-header-phone {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #FAF8F5;
+      text-decoration: none;
+    }
+    .ch-header-phone svg { color: var(--gold); flex-shrink: 0; }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    .ch-hero {
+      min-height: 100svh;
+      padding-top: 58px; /* header offset */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+
+      background: url('https://cdn.lofty.com/image/fs/560122404876720/website/55463/cmsbuild/20251028_d192dec4620e4db9.jpeg') center/cover no-repeat;
+    }
+
+    /* Dark overlay — 65% opacity as specified */
+    .ch-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(9, 21, 16, 0.75);
+      z-index: 1;
+    }
+
+    /* Subtle texture layer */
+    .ch-hero-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 85%, rgba(201, 168, 76, 0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(27, 58, 45, 0.40) 0%, transparent 55%);
+      z-index: 2;
+    }
+
+    .ch-hero-inner {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+    }
+    @media (min-width: 480px) {
+      .ch-hero-inner { padding: 48px 24px 64px; gap: 36px; }
+    }
+
+    @media (min-width: 900px) {
+      .ch-hero-inner {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 64px;
+        padding: 64px 40px;
+      }
+    }
+
+    /* Hero copy */
+    .ch-hero-copy {
+      flex: 1;
+      color: #FAF8F5;
+      text-align: center;
+    }
+    @media (min-width: 900px) {
+      .ch-hero-copy { text-align: left; padding-top: 12px; }
+    }
+
+    .ch-eyebrow {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201, 168, 76, 0.38);
+      border-radius: 2px;
+      padding: 4px 12px;
+      margin-bottom: 18px;
+    }
+
+    .ch-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.85rem, 4.5vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.18;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+    .ch-headline em { font-style: italic; color: var(--gold); }
+
+    .ch-subheadline {
+      font-size: 1rem;
+      color: rgba(250, 248, 245, 0.78);
+      line-height: 1.75;
+      max-width: 480px;
+      margin: 0 auto 28px;
+    }
+    @media (min-width: 900px) { .ch-subheadline { margin-left: 0; } }
+
+    /* Proof chips */
+    .ch-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    @media (min-width: 900px) { .ch-chips { justify-content: flex-start; } }
+
+    .ch-chip {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.8rem;
+      color: rgba(250, 248, 245, 0.70);
+    }
+    .ch-chip-dot {
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── FORM CARD ──────────────────────────────────────────── */
+    .ch-form-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 24px 16px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.38);
+      flex-shrink: 0;
+    }
+    @media (min-width: 480px) { .ch-form-card { padding: 32px 28px; } }
+    @media (min-width: 900px) { .ch-form-card { min-width: 380px; } }
+
+    .ch-form-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .ch-form-subtext {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+      line-height: 1.55;
+    }
+
+    .ch-field { margin-bottom: 14px; }
+    .ch-field label {
+      display: block;
+      font-size: 0.73rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .ch-field input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1.5px solid #E0DDD8;
+      border-radius: 3px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color 0.18s, background 0.18s;
+      outline: none;
+      appearance: none;
+    }
+    .ch-field input:focus {
+      border-color: var(--green);
+      background: var(--white);
+    }
+    .ch-field input::placeholder { color: #B0A89F; }
+
+    .ch-checkbox {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .ch-checkbox input[type="checkbox"] {
+      width: 16px; height: 16px;
+      margin-top: 2px;
+      accent-color: var(--green);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .ch-checkbox label {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .ch-cta {
+      width: 100%;
+      padding: 17px 24px;
+      background: var(--gold);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      margin-bottom: 13px;
+    }
+    .ch-cta:hover:not(:disabled) { background: var(--gold-hover); }
+    .ch-cta:active:not(:disabled) { transform: scale(0.99); }
+    .ch-cta:disabled { opacity: 0.68; cursor: not-allowed; }
+
+    @keyframes ch-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .ch-spin { animation: ch-spin 0.75s linear infinite; }
+
+    .ch-trust {
+      font-size: 0.75rem;
+      color: #9E9890;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* Form success */
+    .ch-success { display: none; text-align: center; padding: 12px 0; }
+    .ch-success.show { display: block; }
+    .ch-success-check {
+      width: 52px; height: 52px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      color: white;
+    }
+    .ch-success h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .ch-success p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── PROOF BAR ───────────────────────────────────────────── */
+    .ch-proof-bar {
+      background: var(--green);
+      padding: 14px 24px;
+    }
+    .ch-proof-bar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 28px;
+    }
+    .ch-proof-stat {
+      font-size: 0.85rem;
+      color: rgba(250, 248, 245, 0.80);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .ch-proof-stat strong { color: var(--gold); font-weight: 600; }
+    .ch-proof-sep { color: rgba(201,168,76,0.35); display: none; }
+    @media (min-width: 600px) { .ch-proof-sep { display: block; } }
+
+    /* ── SHARED SECTION STYLES ──────────────────────────────── */
+    .ch-sec { padding: 68px 24px; }
+    .ch-sec-inner { max-width: 1100px; margin: 0 auto; }
+    .ch-sec--white { background: var(--white); }
+
+    .ch-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .ch-rule {
+      width: 44px; height: 2px;
+      background: var(--gold);
+      margin-bottom: 22px;
+    }
+
+    .ch-sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.55rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .ch-sec-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 620px;
+      margin-bottom: 40px;
+    }
+
+    /* ── MARKET STATS GRID ──────────────────────────────────── */
+    .ch-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 800px) {
+      .ch-stats { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .ch-stat {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 22px 18px;
+    }
+    .ch-stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1.1;
+      margin-bottom: 5px;
+    }
+    .ch-stat-lbl { font-size: 0.78rem; color: var(--muted); font-weight: 500; }
+    .ch-stat-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--green);
+      background: rgba(27, 58, 45, 0.09);
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+
+    /* ── NEIGHBOURHOOD LIST ──────────────────────────────────── */
+    .ch-hoods {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    @media (min-width: 600px) {
+      .ch-hoods { grid-template-columns: 1fr 1fr; }
+    }
+
+    .ch-hood {
+      background: var(--white);
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .ch-hood-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 4px;
+    }
+    .ch-hood-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .ch-hood-price {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold);
+      white-space: nowrap;
+      text-align: right;
+      flex-shrink: 0;
+      padding-top: 1px;
+    }
+
+    /* ── FEATURES GRID ──────────────────────────────────────── */
+    .ch-features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 600px) { .ch-features { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px) { .ch-features { grid-template-columns: repeat(3, 1fr); } }
+
+    .ch-feature {
+      padding: 26px 22px;
+      background: var(--white);
+      border-radius: 4px;
+      border-left: 3px solid var(--gold);
+    }
+    .ch-feature-icon { font-size: 1.4rem; margin-bottom: 12px; }
+    .ch-feature-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .ch-feature-desc {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── TESTIMONIALS ───────────────────────────────────────── */
+    .ch-testimonials {
+      background: var(--green);
+      padding: 68px 24px;
+    }
+    .ch-testimonials-inner { max-width: 1100px; margin: 0 auto; }
+    .ch-t-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.75);
+      margin-bottom: 14px;
+    }
+    .ch-t-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      color: #FAF8F5;
+      margin-bottom: 40px;
+    }
+    .ch-t-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 640px) {
+      .ch-t-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .ch-t-card {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 4px;
+      padding: 26px 22px;
+      border-top: 2px solid rgba(201, 168, 76, 0.38);
+    }
+    .ch-t-quote {
+      font-size: 0.9375rem;
+      color: rgba(250, 248, 245, 0.84);
+      line-height: 1.72;
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+    .ch-t-quote::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      line-height: 0;
+      vertical-align: -0.5em;
+      margin-right: 3px;
+    }
+    .ch-t-author {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── PERFECT FOR ─────────────────────────────────────────── */
+    .ch-for-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 32px;
+    }
+    @media (min-width: 640px) {
+      .ch-for-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .ch-for-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 14px;
+      background: var(--bg);
+      border-radius: 3px;
+      border: 1px solid var(--border);
+    }
+    .ch-for-check {
+      width: 18px; height: 18px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: white;
+      font-size: 0.6rem;
+      font-weight: 700;
+    }
+    .ch-for-text { font-size: 0.84rem; color: var(--text); font-weight: 500; line-height: 1.35; }
+
+    /* ── AGENT ──────────────────────────────────────────────── */
+    .ch-agent-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      align-items: center;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .ch-agent-wrap {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+      }
+    }
+    .ch-agent-photo {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      background: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .ch-agent-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .ch-agent-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 3px;
+    }
+    .ch-agent-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .ch-agent-bio {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      line-height: 1.72;
+      max-width: 560px;
+      margin-bottom: 16px;
+    }
+    .ch-agent-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+    @media (min-width: 640px) { .ch-agent-links { justify-content: flex-start; } }
+    .ch-agent-link {
+      font-size: 0.875rem;
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .ch-agent-link:hover { color: var(--gold); }
+
+    /* ── BOTTOM CTA ─────────────────────────────────────────── */
+    .ch-bottom-cta {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #243D2F 100%);
+      padding: 52px 24px;
+      text-align: center;
+    }
+    .ch-bottom-cta-inner { max-width: 580px; margin: 0 auto; }
+    .ch-bottom-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.45rem, 3vw, 1.9rem);
+      color: #FAF8F5;
+      margin-bottom: 12px;
+    }
+    .ch-bottom-cta p {
+      color: rgba(250, 248, 245, 0.72);
+      font-size: 0.9375rem;
+      margin-bottom: 28px;
+    }
+    .ch-bottom-cta-btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background: var(--gold);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.18s;
+      border: none;
+      cursor: pointer;
+    }
+    .ch-bottom-cta-btn:hover { background: var(--gold-hover); }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    .ch-footer {
+      background: #111;
+      padding: 24px;
+    }
+    .ch-footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+    @media (min-width: 600px) {
+      .ch-footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+    .ch-footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      color: rgba(250, 248, 245, 0.55);
+    }
+    .ch-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+    .ch-footer-links a {
+      font-size: 0.78rem;
+      color: rgba(250, 248, 245, 0.45);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .ch-footer-links a:hover { color: var(--gold); }
+    .ch-footer-disc {
+      max-width: 1100px;
+      margin: 10px auto 0;
+      font-size: 0.68rem;
+      color: rgba(250, 248, 245, 0.26);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* ── STICKY MOBILE BAR ──────────────────────────────────── */
+    .ch-sticky {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 90;
+      background: var(--green-dark);
+      padding: 12px 20px;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.22);
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .ch-sticky.show { display: flex; }
+    @media (min-width: 769px) { .ch-sticky { display: none !important; } }
+    .ch-sticky-text {
+      font-size: 0.84rem;
+      color: rgba(250, 248, 245, 0.88);
+      font-weight: 500;
+      flex: 1;
+      line-height: 1.3;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+    .ch-sticky-btn {
+      padding: 10px 18px;
+      background: var(--gold);
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+    .ch-sticky-btn:hover { background: var(--gold-hover); }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ─────────────────────────────────────────────────── -->
+<header class="ch-header">
+  <a href="https://corridorhomes.ca" class="ch-logo">Corridor<span>Homes</span>.ca</a>
+  <a href="tel:6048285704" class="ch-header-phone" aria-label="Call Eric Johnson">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+    </svg>
+    604.828.5704
+  </a>
+</header>
+
+<!-- ── HERO + FORM ────────────────────────────────────────────── -->
+<section class="ch-hero" id="top">
+  <div class="ch-hero-overlay" aria-hidden="true"></div>
+  <div class="ch-hero-glow" aria-hidden="true"></div>
+
+  <div class="ch-hero-inner">
+
+    <!-- Hero copy -->
+    <div class="ch-hero-copy">
+      <span class="ch-eyebrow">Q1 2026 &middot; Squamish, BC</span>
+
+      <h1 class="ch-headline">
+        Thinking of Leaving Vancouver?<br>
+        Here's Your <em>Neighbourhood&#8209;by&#8209;Neighbourhood</em> Guide to Squamish.
+      </h1>
+
+      <p class="ch-subheadline">
+        20+ pages covering schools, commute times, price ranges by neighbourhood, and hidden gems. Updated Q1 2026.
+      </p>
+
+      <div class="ch-chips">
+        <span class="ch-chip"><span class="ch-chip-dot"></span>18+ neighbourhood deep dives</span>
+        <span class="ch-chip"><span class="ch-chip-dot"></span>150+ downloads</span>
+        <span class="ch-chip"><span class="ch-chip-dot"></span>Q1 2026 market data</span>
+      </div>
+    </div>
+
+    <!-- Lead form -->
+    <div class="ch-form-card" id="ch-form-card">
+
+      <div id="ch-form-wrap">
+        <h2 class="ch-form-headline">Get Your Free Guide</h2>
+        <p class="ch-form-subtext">Join 150+ homebuyers who downloaded this before making their move.</p>
+
+        <form id="ch-form" novalidate>
+          <div class="ch-field">
+            <label for="ch-fname">First Name</label>
+            <input type="text" id="ch-fname" name="firstName" placeholder="Your first name" autocomplete="given-name" required>
+          </div>
+
+          <div class="ch-field">
+            <label for="ch-email">Email Address</label>
+            <input type="email" id="ch-email" name="email" placeholder="your@email.com" autocomplete="email" required>
+          </div>
+
+          <div class="ch-checkbox">
+            <input type="checkbox" id="ch-consent" name="consent" checked>
+            <label for="ch-consent">I agree to receive the guide and occasional Squamish market updates</label>
+          </div>
+
+          <button type="submit" class="ch-cta" id="ch-submit">
+            <span id="ch-btn-text">Get My Free Guide</span>
+            <svg id="ch-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+            <svg id="ch-btn-spinner" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none" class="ch-spin" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" stroke-dasharray="28" stroke-dashoffset="8" stroke-linecap="round"/>
+            </svg>
+          </button>
+
+          <p class="ch-trust">We respect your privacy. Instant download + occasional market insights. Unsubscribe anytime.</p>
+        </form>
+      </div>
+
+      <!-- Success state -->
+      <div class="ch-success" id="ch-success" aria-live="polite">
+        <div class="ch-success-check" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <h3>You're in!</h3>
+        <p>Taking you to your guide&hellip;</p>
+      </div>
+
+    </div>
+    <!-- /form card -->
+
+  </div>
+</section>
+
+<!-- ── PROOF BAR ──────────────────────────────────────────────── -->
+<div class="ch-proof-bar" aria-label="Key statistics">
+  <div class="ch-proof-bar-inner">
+    <div class="ch-proof-stat"><strong>$1.67M</strong>&nbsp;avg SFH &mdash; up 15% YoY</div>
+    <div class="ch-proof-sep" aria-hidden="true">|</div>
+    <div class="ch-proof-stat"><strong>18+</strong>&nbsp;neighbourhood deep dives</div>
+    <div class="ch-proof-sep" aria-hidden="true">|</div>
+    <div class="ch-proof-stat"><strong>150+</strong>&nbsp;homebuyers guided</div>
+    <div class="ch-proof-sep" aria-hidden="true">|</div>
+    <div class="ch-proof-stat"><strong>Q1 2026</strong>&nbsp;market data</div>
+  </div>
+</div>
+
+<!-- ── MARKET INTELLIGENCE ────────────────────────────────────── -->
+<section class="ch-sec" aria-labelledby="market-title">
+  <div class="ch-sec-inner">
+    <p class="ch-label">Market Intelligence</p>
+    <div class="ch-rule" aria-hidden="true"></div>
+    <h2 class="ch-sec-title" id="market-title">Q1 2026 Squamish Market Overview</h2>
+    <p class="ch-sec-desc">
+      The Sea-to-Sky corridor remains one of BC's most compelling value plays — meaningful savings over Vancouver
+      with direct access to world-class outdoor recreation and a growing local economy.
+    </p>
+
+    <div class="ch-stats">
+      <div class="ch-stat">
+        <div class="ch-stat-val">$1.67M</div>
+        <div class="ch-stat-lbl">Average SFH Price</div>
+        <span class="ch-stat-tag">&#8593; 15% YoY</span>
+      </div>
+      <div class="ch-stat">
+        <div class="ch-stat-val">31%</div>
+        <div class="ch-stat-lbl">Apartment Sales Surge</div>
+        <span class="ch-stat-tag">Q1 2026 growth</span>
+      </div>
+      <div class="ch-stat">
+        <div class="ch-stat-val">9 days</div>
+        <div class="ch-stat-lbl">Fastest DOM (Downtown)</div>
+        <span class="ch-stat-tag">High demand signal</span>
+      </div>
+      <div class="ch-stat">
+        <div class="ch-stat-val">19&ndash;27%</div>
+        <div class="ch-stat-lbl">Savings vs. Vancouver Detached</div>
+        <span class="ch-stat-tag">On comparable homes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEIGHBOURHOOD PREVIEWS ─────────────────────────────────── -->
+<section class="ch-sec ch-sec--white" aria-labelledby="hoods-title">
+  <div class="ch-sec-inner">
+    <p class="ch-label">Neighbourhood Deep Dives</p>
+    <div class="ch-rule" aria-hidden="true"></div>
+    <h2 class="ch-sec-title" id="hoods-title">Every Squamish Neighbourhood, Ranked &amp; Reviewed</h2>
+    <p class="ch-sec-desc">
+      From Britannia Beach's oceanside heritage village to Brackendale's acreage estates — each community has its
+      own character, price point, and perfect buyer profile. The guide covers all 14.
+    </p>
+
+    <div class="ch-hoods">
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">Britannia Beach</div>
+          <div class="ch-hood-desc">Coastal heritage village. Surf Park approved 2025. 35 min to Vancouver.</div>
+        </div>
+        <div class="ch-hood-price">From $700K</div>
+      </div>
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">Valleycliffe</div>
+          <div class="ch-hood-desc">Best SFH value in Squamish. Large flat lots, great schools, trails from your door.</div>
+        </div>
+        <div class="ch-hood-price">Avg $960K</div>
+      </div>
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">Downtown Squamish</div>
+          <div class="ch-hood-desc">Most walkable. Cleveland Ave dining scene. 9-day sales pace — moves fast.</div>
+        </div>
+        <div class="ch-hood-price">From $450K</div>
+      </div>
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">Garibaldi Highlands</div>
+          <div class="ch-hood-desc">Top school catchment (Fraser 6.1/10). Most sought-after family neighbourhood.</div>
+        </div>
+        <div class="ch-hood-price">From $1.4M</div>
+      </div>
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">Crumpit Woods</div>
+          <div class="ch-hood-desc">Luxury custom builds. Architectural Digest-worthy homes. Unmatched Chief views.</div>
+        </div>
+        <div class="ch-hood-price">From $2.5M</div>
+      </div>
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">Sea + Sky</div>
+          <div class="ch-hood-desc">Bosa master-planned community. World-class amenities. Gondola access.</div>
+        </div>
+        <div class="ch-hood-price">From $700K</div>
+      </div>
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">Northyards</div>
+          <div class="ch-hood-desc">Surrounded by trails. Modern buildings. Fast 11-day sales pace.</div>
+        </div>
+        <div class="ch-hood-price">Avg $1.08M</div>
+      </div>
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">Brackendale</div>
+          <div class="ch-hood-desc">Eagle capital of Canada. Largest lots and acreage. Best value for space.</div>
+        </div>
+        <div class="ch-hood-price">From $1.3M</div>
+      </div>
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">Hospital Hill</div>
+          <div class="ch-hood-desc">Great views, Smoke Bluffs trail access, resort-style Redbridge amenities.</div>
+        </div>
+        <div class="ch-hood-price">From $800K</div>
+      </div>
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">Dentville</div>
+          <div class="ch-hood-desc">Heritage character meets modern townhomes. Walk to downtown and A-Frame Brewing.</div>
+        </div>
+        <div class="ch-hood-price">Avg $959K</div>
+      </div>
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">Garibaldi Estates</div>
+          <div class="ch-hood-desc">Central all-rounder. Good school access at better value than Highlands.</div>
+        </div>
+        <div class="ch-hood-price">From $1.2M</div>
+      </div>
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">Tantalus</div>
+          <div class="ch-hood-desc">Modern new builds with warranties. Spectacular Tantalus range views.</div>
+        </div>
+        <div class="ch-hood-price">From $1.5M</div>
+      </div>
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">University Heights</div>
+          <div class="ch-hood-desc">Upscale contemporary homes. Spectacular views. Strong appreciation track record.</div>
+        </div>
+        <div class="ch-hood-price">From $1.5M</div>
+      </div>
+      <div class="ch-hood">
+        <div>
+          <div class="ch-hood-name">Oceanfront Squamish</div>
+          <div class="ch-hood-desc">New waterfront master-planned community. Pre-sale launching early 2026.</div>
+        </div>
+        <div class="ch-hood-price">Coming 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT'S INSIDE ──────────────────────────────────────────── -->
+<section class="ch-sec" aria-labelledby="inside-title">
+  <div class="ch-sec-inner">
+    <p class="ch-label">What's Inside</p>
+    <div class="ch-rule" aria-hidden="true"></div>
+    <h2 class="ch-sec-title" id="inside-title">Essential Squamish Intelligence</h2>
+    <p class="ch-sec-desc">Everything a Vancouver buyer needs before making the move north.</p>
+
+    <div class="ch-features">
+      <div class="ch-feature">
+        <div class="ch-feature-icon" aria-hidden="true">🏫</div>
+        <div class="ch-feature-title">School Catchment Maps</div>
+        <div class="ch-feature-desc">
+          Fraser Institute ratings for all 8 schools. Which neighbourhoods feed into Garibaldi Highlands Elementary
+          (6.1/10) and Squamish's French Immersion program at L'&Eacute;cole Les Aiglons.
+        </div>
+      </div>
+      <div class="ch-feature">
+        <div class="ch-feature-icon" aria-hidden="true">🚗</div>
+        <div class="ch-feature-title">Commute Times by Neighbourhood</div>
+        <div class="ch-feature-desc">
+          Honest drive times to Vancouver (35–90 min depending on where you land). Squamish Connector bus options:
+          $185 transferable 10-trip pass, ~60 min laptop-friendly ride.
+        </div>
+      </div>
+      <div class="ch-feature">
+        <div class="ch-feature-icon" aria-hidden="true">💰</div>
+        <div class="ch-feature-title">Price Ranges + Market Trends</div>
+        <div class="ch-feature-desc">
+          From $450K condos in Downtown to $5M+ Crumpit Woods estates. Avg days on market,
+          price-per-sqft analysis, and where to find hidden value in Q1 2026.
+        </div>
+      </div>
+      <div class="ch-feature">
+        <div class="ch-feature-icon" aria-hidden="true">🍺</div>
+        <div class="ch-feature-title">Local Dining + Hidden Gems</div>
+        <div class="ch-feature-desc">
+          The Backyard Squamish (voted best pub in town), 1914 Coffee Co, A-Frame Brewing,
+          Autostrada Oyster Bar, Howe Sound Brew Pub — the insider list, neighbourhood by neighbourhood.
+        </div>
+      </div>
+      <div class="ch-feature">
+        <div class="ch-feature-icon" aria-hidden="true">🏔️</div>
+        <div class="ch-feature-title">Outdoor Recreation Access</div>
+        <div class="ch-feature-desc">
+          Trail access ratings, Sea to Sky Gondola proximity, Stawamus Chief climbing, estuary walks —
+          which neighbourhoods put you closest to why you moved here.
+        </div>
+      </div>
+      <div class="ch-feature">
+        <div class="ch-feature-icon" aria-hidden="true">📈</div>
+        <div class="ch-feature-title">Development + Investment Signals</div>
+        <div class="ch-feature-desc">
+          South Britannia Surf Park (approved May 2025), Oceanfront Squamish pre-sale 2026,
+          downtown overpass completion — where smart money is paying attention.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ───────────────────────────────────────────── -->
+<section class="ch-testimonials" aria-labelledby="testimonials-title">
+  <div class="ch-testimonials-inner">
+    <p class="ch-t-label">Client Experiences</p>
+    <h2 class="ch-t-title" id="testimonials-title">What Squamish Buyers Say</h2>
+
+    <div class="ch-t-grid">
+      <div class="ch-t-card">
+        <p class="ch-t-quote">
+          This guide saved me months of research. The neighbourhood breakdowns helped us find the perfect family home in Valleycliffe!
+        </p>
+        <div class="ch-t-author">Sarah M. &mdash; Recent Buyer</div>
+      </div>
+      <div class="ch-t-card">
+        <p class="ch-t-quote">
+          Eric walked with us every step of the way helping us understand each neighbourhood. He helped us walk away from deals he thought we'd regret. No flashy sales pitches. The most approachable human you could ask for.
+        </p>
+        <div class="ch-t-author">NT &mdash; Squamish Homebuyer</div>
+      </div>
+      <div class="ch-t-card">
+        <p class="ch-t-quote">
+          We never felt pressured to make a decision faster than we were ready.
+        </p>
+        <div class="ch-t-author">KT &mdash; First-Time Buyer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PERFECT FOR ────────────────────────────────────────────── -->
+<section class="ch-sec ch-sec--white" aria-labelledby="for-title">
+  <div class="ch-sec-inner">
+    <p class="ch-label">Who This Is For</p>
+    <div class="ch-rule" aria-hidden="true"></div>
+    <h2 class="ch-sec-title" id="for-title">This Guide Is Perfect For</h2>
+
+    <div class="ch-for-grid">
+      <div class="ch-for-item">
+        <div class="ch-for-check" aria-hidden="true">&#10003;</div>
+        <span class="ch-for-text">First-time buyers exploring Squamish</span>
+      </div>
+      <div class="ch-for-item">
+        <div class="ch-for-check" aria-hidden="true">&#10003;</div>
+        <span class="ch-for-text">Families relocating from Vancouver or Toronto</span>
+      </div>
+      <div class="ch-for-item">
+        <div class="ch-for-check" aria-hidden="true">&#10003;</div>
+        <span class="ch-for-text">Real estate investors seeking opportunities</span>
+      </div>
+      <div class="ch-for-item">
+        <div class="ch-for-check" aria-hidden="true">&#10003;</div>
+        <span class="ch-for-text">Outdoor enthusiasts wanting the perfect base</span>
+      </div>
+      <div class="ch-for-item">
+        <div class="ch-for-check" aria-hidden="true">&#10003;</div>
+        <span class="ch-for-text">Anyone considering the Sea-to-Sky lifestyle</span>
+      </div>
+      <div class="ch-for-item">
+        <div class="ch-for-check" aria-hidden="true">&#10003;</div>
+        <span class="ch-for-text">Remote workers seeking more space and nature</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AGENT ──────────────────────────────────────────────────── -->
+<section class="ch-sec" aria-labelledby="agent-title">
+  <div class="ch-agent-wrap">
+    <div class="ch-agent-photo" aria-label="Eric Johnson">
+      <!--
+        Replace with your photo:
+        <img src="/path/to/eric-johnson.jpg" alt="Eric Johnson, REALTOR®">
+      -->
+      EJ
+    </div>
+    <div>
+      <div class="ch-agent-name" id="agent-title">Eric Johnson</div>
+      <div class="ch-agent-title">REALTOR&reg; &nbsp;|&nbsp; Engel &amp; V&ouml;lkers Squamish/Whistler</div>
+      <p class="ch-agent-bio">
+        Local Squamish REALTOR&reg; with deep knowledge of every neighbourhood in this guide.
+        My approach: help you find where you'll love living, not where it's easiest to close a deal.
+        I'll walk away from a sale I don't think serves you.
+      </p>
+      <div class="ch-agent-links">
+        <a href="tel:6048285704" class="ch-agent-link">604.828.5704</a>
+        <a href="mailto:info@corridorhomes.ca" class="ch-agent-link">info@corridorhomes.ca</a>
+        <a href="https://corridorhomes.ca" class="ch-agent-link">corridorhomes.ca</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BOTTOM CTA ─────────────────────────────────────────────── -->
+<div class="ch-bottom-cta">
+  <div class="ch-bottom-cta-inner">
+    <h2>Ready to Find Your Squamish Neighbourhood?</h2>
+    <p>Get the complete guide free &mdash; instant, no obligation.</p>
+    <button class="ch-bottom-cta-btn" onclick="scrollToForm()">Download Free Guide</button>
+  </div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer class="ch-footer">
+  <div class="ch-footer-inner">
+    <div class="ch-footer-brand">Eric Johnson &nbsp;|&nbsp; REALTOR&reg; &nbsp;|&nbsp; Engel &amp; V&ouml;lkers</div>
+    <div class="ch-footer-links">
+      <a href="tel:6048285704">604.828.5704</a>
+      <a href="mailto:info@corridorhomes.ca">info@corridorhomes.ca</a>
+      <a href="https://corridorhomes.ca">corridorhomes.ca</a>
+    </div>
+  </div>
+  <p class="ch-footer-disc">
+    &copy; 2026 CorridorHomes.ca. Eric Johnson is a licensed REALTOR&reg; with Engel &amp; V&ouml;lkers Squamish.
+    All market data represents Q1 2026 and is subject to change. Not intended to solicit buyers or sellers currently under contract.
+  </p>
+</footer>
+
+<!-- ── STICKY MOBILE BAR ──────────────────────────────────────── -->
+<div class="ch-sticky" id="ch-sticky" role="complementary" aria-label="Download prompt">
+  <span class="ch-sticky-text">Free Squamish Guide &mdash; 150+ downloads</span>
+  <button class="ch-sticky-btn" onclick="scrollToForm()">Get Guide</button>
+</div>
+
+<!-- ── SCRIPTS ────────────────────────────────────────────────── -->
+<script>
+  var SUBMIT_URL = 'https://guide.corridorhomes.ca/api/submit-lead';
+
+  // ── FORM SUBMISSION ─────────────────────────────────────────────
+  document.getElementById('ch-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var firstName = document.getElementById('ch-fname').value.trim();
+    var email     = document.getElementById('ch-email').value.trim();
+    var consent   = document.getElementById('ch-consent').checked;
+
+    // Basic validation
+    if (!firstName) {
+      document.getElementById('ch-fname').focus();
+      return;
+    }
+    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRe.test(email)) {
+      document.getElementById('ch-email').focus();
+      return;
+    }
+
+    // Loading state
+    var btn     = document.getElementById('ch-submit');
+    var btnText = document.getElementById('ch-btn-text');
+    var arrow   = document.getElementById('ch-btn-arrow');
+    var spinner = document.getElementById('ch-btn-spinner');
+    btn.disabled = true;
+    btnText.textContent = 'Sending\u2026';
+    arrow.style.display   = 'none';
+    spinner.style.display = 'block';
+
+    var payload = {
+      firstName: firstName,
+      email:     email,
+      client:    'CORRIDORHOMES',
+      guideType: 'neighbourhood',
+      source:    'Squamish Neighbourhoods Guide 2026',
+      timestamp: new Date().toISOString()
+    };
+
+    function showSuccess() {
+      document.getElementById('ch-form-wrap').style.display = 'none';
+      document.getElementById('ch-success').classList.add('show');
+      var sticky = document.getElementById('ch-sticky');
+      if (sticky) sticky.style.display = 'none';
+      setTimeout(function() { window.location.href = 'https://guide.corridorhomes.ca'; }, 2000);
+    }
+
+    fetch(SUBMIT_URL, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload)
+    })
+    .then(function() { showSuccess(); })
+    .catch(function(err) {
+      console.error('Submission error:', err);
+      showSuccess();
+    });
+  });
+
+  // ── STICKY BAR: show after 30% scroll on mobile ──────────────────
+  var stickyBar   = document.getElementById('ch-sticky');
+  var stickyShown = false;
+
+  window.addEventListener('scroll', function() {
+    if (stickyShown || window.innerWidth >= 769) return;
+    var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (pct > 0.30) {
+      stickyBar.classList.add('show');
+      stickyShown = true;
+    }
+  }, { passive: true });
+
+  // ── SCROLL TO FORM ───────────────────────────────────────────────
+  function scrollToForm() {
+    var card = document.getElementById('ch-form-card');
+    if (!card) return;
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(function() {
+      var firstInput = document.getElementById('ch-fname');
+      if (firstInput) firstInput.focus();
+    }, 550);
+  }
+</script>
+
+</body>
+</html>

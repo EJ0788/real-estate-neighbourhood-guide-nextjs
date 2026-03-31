@@ -16,7 +16,7 @@ export default function HomePage() {
     <>
       {/* ── HERO ── */}
       <section
-        className="relative min-h-[85svh] flex flex-col justify-center"
+        className="relative min-h-[70svh] sm:min-h-[85svh] flex flex-col justify-center"
         style={{
           backgroundImage: 'url(/images/downtownsquamish.jpeg)',
           backgroundSize: 'cover',
@@ -26,7 +26,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[rgba(9,21,16,0.65)]" aria-hidden="true" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(201,168,76,0.07)_0%,transparent_55%)]" aria-hidden="true" />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-5 py-20 md:py-28 text-center">
+        <div className="relative z-10 mx-auto max-w-6xl px-5 py-12 sm:py-20 md:py-28 text-center">
           <span className="inline-block text-[0.68rem] font-bold tracking-[0.16em] uppercase text-gold border border-gold/35 px-3 py-1 rounded-sm mb-6">
             Q1 2026 &middot; Squamish, BC
           </span>
@@ -67,7 +67,7 @@ export default function HomePage() {
 
       {/* ── STATS BAR ── */}
       <div className="bg-forest">
-        <div className="mx-auto max-w-6xl px-5 py-4 flex flex-wrap justify-center gap-x-10 gap-y-2">
+        <div className="mx-auto max-w-6xl px-5 py-4 flex flex-wrap justify-center gap-x-4 sm:gap-x-10 gap-y-2">
           {STATS.map((s, i) => (
             <div key={i} className="flex items-center gap-2 text-sm text-cream/75">
               <strong className="text-gold font-semibold">{s.value}</strong>
@@ -78,7 +78,7 @@ export default function HomePage() {
       </div>
 
       {/* ── NEIGHBOURHOOD GRID ── */}
-      <section id="neighbourhoods" className="py-20 px-5">
+      <section id="neighbourhoods" className="py-14 sm:py-20 px-5">
         <div className="mx-auto max-w-6xl">
           <p className="text-[0.68rem] font-bold tracking-[0.16em] uppercase text-gold mb-4">
             Explore
@@ -87,8 +87,13 @@ export default function HomePage() {
           <h2 className="font-display text-3xl md:text-4xl font-bold text-forest mb-4 leading-snug">
             Every Squamish Neighbourhood
           </h2>
-          <p className="text-muted text-base leading-relaxed max-w-xl mb-12">
+          <p className="text-muted text-base leading-relaxed max-w-xl mb-4">
             From coastal villages to luxury mountain estates — 14 communities, each with its own price point, character, and buyer profile.
+          </p>
+          <p className="text-sm mb-12">
+            <a href="https://schools.corridorhomes.ca" className="font-semibold text-forest hover:text-gold transition-colors">
+              See the full Squamish school catchment guide →
+            </a>
           </p>
 
           {/* Grid with inline lead form after card 3 */}
@@ -112,7 +117,7 @@ export default function HomePage() {
       </section>
 
       {/* ── MARKET SNAPSHOT ── */}
-      <section className="bg-white py-20 px-5">
+      <section className="bg-white py-14 sm:py-20 px-5">
         <div className="mx-auto max-w-6xl">
           <p className="text-[0.68rem] font-bold tracking-[0.16em] uppercase text-gold mb-4">Market Intelligence</p>
           <div className="w-11 h-0.5 bg-gold mb-5" aria-hidden="true" />
@@ -128,8 +133,8 @@ export default function HomePage() {
               { val: '9 days', lbl: 'Fastest DOM (Downtown)', tag: 'High demand' },
               { val: '19–27%', lbl: 'Savings vs. Vancouver detached', tag: 'Comparable homes' },
             ].map((s) => (
-              <div key={s.val} className="bg-cream border border-forest/10 rounded-sm p-5">
-                <div className="font-display text-2xl font-bold text-forest mb-1">{s.val}</div>
+              <div key={s.val} className="bg-cream border border-forest/10 rounded-sm p-4 sm:p-5">
+                <div className="font-display text-xl sm:text-2xl font-bold text-forest mb-1">{s.val}</div>
                 <div className="text-xs text-muted mb-2">{s.lbl}</div>
                 <span className="text-xs font-semibold text-forest bg-forest/8 px-2 py-0.5 rounded-sm">{s.tag}</span>
               </div>
@@ -174,9 +179,58 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── FAQ ── */}
+      <section className="bg-white py-14 sm:py-20 px-5">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-[0.68rem] font-bold tracking-[0.16em] uppercase text-gold mb-4">FAQ</p>
+          <div className="w-11 h-0.5 bg-gold mb-5" aria-hidden="true" />
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-forest mb-12">
+            Squamish Real Estate — Frequently Asked Questions
+          </h2>
+          <div className="max-w-3xl divide-y divide-forest/10">
+            {[
+              {
+                q: 'What is the best neighbourhood in Squamish for families?',
+                a: 'Garibaldi Highlands is widely considered the best neighbourhood in Squamish for families. It offers the highest-rated elementary school catchment (Garibaldi Highlands Elementary, Fraser 6.1/10), mature tree-lined streets, mountain views, and strong long-term property values ranging from $1.4M–$2.0M+.',
+              },
+              {
+                q: 'What is the average house price in Squamish in 2026?',
+                a: 'As of Q1 2026, the average single-family home price in Squamish is $1.67M — approximately 19–27% less than comparable detached homes in Vancouver. The market has seen 15% year-over-year price growth, with some neighbourhoods averaging just 9 days on market.',
+              },
+              {
+                q: 'Which Squamish neighbourhood is closest to Vancouver?',
+                a: 'Britannia Beach is the closest Squamish-area community to Vancouver at approximately 35 minutes by car. Most central Squamish neighbourhoods — including Downtown, Dentville, and Northyards — are 60–75 minutes from Vancouver.',
+              },
+              {
+                q: 'What is the most affordable neighbourhood in Squamish?',
+                a: 'Downtown Squamish offers the most affordable entry point, with condos and townhomes ranging from $450K–$600K. It also has the highest walk score (65) and fastest days on market (9 days average) of any neighbourhood in the city.',
+              },
+              {
+                q: 'Is Squamish a good place to buy real estate in 2026?',
+                a: 'Yes. Squamish offers compelling value relative to Vancouver — comparable homes are 19–27% less expensive — with direct access to world-class outdoor recreation and a growing community. Q1 2026 data shows strong demand across all property types.',
+              },
+              {
+                q: 'What is the most expensive neighbourhood in Squamish?',
+                a: "Crumpit Woods is Squamish's most exclusive neighbourhood, with custom luxury builds ranging from $2.5M to $5M+. Tantalus and University Heights are also premium communities with prices from $1.5M–$2.5M+.",
+              },
+            ].map(({ q, a }) => (
+              <div key={q} className="py-6">
+                <h3 className="font-display text-lg font-bold text-forest mb-3">{q}</h3>
+                <p className="text-muted leading-relaxed">{a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── BOTTOM LEAD FORM ── */}
       <section className="px-5 pb-20">
         <div className="mx-auto max-w-2xl">
+          <p className="text-sm text-center mb-6">
+            <a href="https://quiz.corridorhomes.ca" className="font-semibold text-forest hover:text-gold transition-colors">
+              Not sure which neighbourhood fits? Take the quiz →
+            </a>
+          </p>
           <LeadForm source="homepage-bottom" />
         </div>
       </section>
