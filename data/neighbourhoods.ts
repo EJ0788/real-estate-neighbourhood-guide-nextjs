@@ -405,7 +405,7 @@ export const neighbourhoods: Neighbourhood[] = [
   {
     slug: 'oceanfront-squamish',
     name: 'Oceanfront Squamish',
-    priceRange: 'Coming 2026 (pre-sale)',
+    priceRange: 'Presale (register for pricing)',
     commute: { vancouver: '60–75 min', whistler: '30 min' },
     walkScore: 40,
     vibe:
@@ -423,10 +423,10 @@ export const neighbourhoods: Neighbourhood[] = [
     hiddenGem:
       "House of Lager has already become a local watering hole — oceanfront views, outstanding beers, epic fries. Worth a visit even while exploring.",
     marketInsight:
-      'Slated for sale early 2026 — register early for priority access.',
+      'Matthews West is releasing new phases in stages — register early for priority access to pricing and floorplans.',
     schools: ['Squamish Elementary', 'Howe Sound Secondary'],
     listingsUrl: 'https://corridorhomes.ca/search?neighbourhood=oceanfront',
-    presaleNote: 'Slated for sale early 2026. Register to be first notified.',
+    presaleNote: 'New phases releasing in stages. Register to be first notified.',
   },
 ]
 

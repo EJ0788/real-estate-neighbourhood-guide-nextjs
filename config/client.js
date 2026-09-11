@@ -17,7 +17,7 @@ export const config = {
   city: 'Squamish',
   province: 'BC',
   metaDescription:
-    'Your complete guide to every Squamish neighbourhood — schools, prices, commute times. Updated Q1 2026.',
+    'Your complete guide to every Squamish neighbourhood — schools, prices, commute times. Updated August 2026.',
 
   // Brand colours (used in globals.css @theme block — update both)
   primaryColour: '#1B3A2D',

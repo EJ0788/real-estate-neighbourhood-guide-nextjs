@@ -82,9 +82,9 @@ export default function RelocationPage() {
               </thead>
               <tbody>
                 {[
-                  { type: 'Detached Home', van: '$2,048,968', sq: '$1,500,000', save: '19–27%' },
-                  { type: 'Townhouse', van: '$1,203,798', sq: '$860,000', save: '17–29%' },
-                  { type: 'Condo / Apartment', van: '$719,864', sq: '$640,000', save: '21–25%' },
+                  { type: 'Detached Home', van: '$1,799,400', sq: '$1,592,700', save: '~11%' },
+                  { type: 'Townhouse', van: '$1,028,800', sq: '$1,009,100', save: '~2%' },
+                  { type: 'Condo / Apartment', van: '$686,200', sq: '$571,500', save: '~17%' },
                 ].map((row, i) => (
                   <tr key={row.type} className={i % 2 === 0 ? 'bg-white' : 'bg-cream'}>
                     <td className="px-5 py-4 font-medium text-forest">{row.type}</td>

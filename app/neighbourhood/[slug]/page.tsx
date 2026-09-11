@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!n) return {}
   return {
     title: `${n.name} | Squamish Neighbourhood Guide`,
-    description: `${n.vibe.slice(0, 140)}… Prices ${n.priceRange}. Updated Q1 2026.`,
+    description: `${n.vibe.slice(0, 140)}… Prices ${n.priceRange}. Updated August 2026.`,
   }
 }
 

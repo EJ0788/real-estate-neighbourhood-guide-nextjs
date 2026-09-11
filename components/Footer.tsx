@@ -40,7 +40,7 @@ export default function Footer() {
 
         <div className="mt-8 pt-6 border-t border-white/[0.07] text-xs text-cream/25 leading-relaxed">
           © {new Date().getFullYear()} CorridorHomes.ca. {config.agentName} is a licensed REALTOR® with {config.agentTitle.replace('REALTOR® | ', '')} Squamish/Whistler.
-          All market data represents Q1 2026 and is subject to change.
+          All market data represents August 2026 and is subject to change.
           Not intended to solicit buyers or sellers currently under contract.
         </div>
       </div>
