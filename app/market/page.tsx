@@ -4,14 +4,14 @@ import { neighbourhoods } from '@/data/neighbourhoods'
 import LeadForm from '@/components/LeadForm'
 
 export const metadata: Metadata = {
-  title: 'August 2026 Squamish Market Overview | CorridorHomes.ca',
-  description: 'Squamish real estate market data for August 2026 — SFH prices, sales activity, days on market by neighbourhood, and key development signals.',
+  title: 'September 2026 Squamish Market Overview | CorridorHomes.ca',
+  description: 'Squamish real estate market data for September 2026 — SFH prices, sales activity, days on market by neighbourhood, and key development signals.',
 }
 
 const priceComparison = [
-  { type: 'Detached Home', vancouver: '$1,799,400', squamish: '$1,592,700', saving: '~11%' },
-  { type: 'Townhouse', vancouver: '$1,028,800', squamish: '$1,009,100', saving: '~2%' },
-  { type: 'Condo / Apartment', vancouver: '$686,200', squamish: '$571,500', saving: '~17%' },
+  { type: 'Detached Home', vancouver: '$1,784,700', squamish: '$1,614,600', saving: '~10%' },
+  { type: 'Townhouse', vancouver: '$1,016,700', squamish: '$1,010,200', saving: '~1%' },
+  { type: 'Condo / Apartment', vancouver: '$682,500', squamish: '$593,600', saving: '~13%' },
 ]
 
 const developments = [
@@ -57,7 +57,7 @@ export default function MarketPage() {
         <div className="absolute inset-0 bg-[rgba(9,21,16,0.35)]" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-6xl px-5">
           <span className="inline-block text-[0.68rem] font-bold tracking-[0.16em] uppercase text-gold border border-gold/35 px-3 py-1 rounded-sm mb-6">
-            August 2026 Market Snapshot
+            September 2026 Market Snapshot
           </span>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-4 max-w-2xl">
             Squamish Real Estate Market Overview
@@ -75,9 +75,9 @@ export default function MarketPage() {
           <div className="w-11 h-0.5 bg-gold mb-8" aria-hidden="true" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { val: '$1.59M', lbl: 'Average SFH benchmark price', tag: 'Aug 2026' },
-              { val: '27%', lbl: 'Detached sales growth', tag: 'YoY, Aug 2026' },
-              { val: '28 days', lbl: 'Avg. days on market', tag: "Buyer's market" },
+              { val: '$1.61M', lbl: 'Average SFH benchmark price', tag: 'Sep 2026' },
+              { val: '-34%', lbl: 'Squamish sales activity', tag: 'YoY, Sep 2026' },
+              { val: '35 days', lbl: 'Avg. days on market', tag: "Buyer's market" },
               { val: '14', lbl: 'Distinct neighbourhoods', tag: 'Covered in full' },
             ].map((s) => (
               <div key={s.val} className="bg-cream border border-forest/10 rounded-sm p-5">
@@ -124,7 +124,7 @@ export default function MarketPage() {
           </div>
 
           <p className="text-xs text-muted mt-4 italic">
-            Vancouver's 2026 price correction has narrowed the gap — but a detached home in Squamish still runs about 11% less than Vancouver, with townhouse pricing between the two markets now nearly converged.
+            Vancouver's 2026 price correction has narrowed the gap further — a detached home in Squamish still runs about 10% less than Vancouver, but townhouse pricing has essentially converged between the two markets, now just ~1% apart.
           </p>
         </div>
       </section>

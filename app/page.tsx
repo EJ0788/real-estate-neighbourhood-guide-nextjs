@@ -6,9 +6,9 @@ import LeadForm from '@/components/LeadForm'
 
 const STATS = [
   { value: '14', label: 'Neighbourhoods' },
-  { value: '$1.59M', label: 'Avg SFH price' },
+  { value: '$1.61M', label: 'Avg SFH price' },
   { value: '9 days', label: 'Fastest DOM' },
-  { value: 'Aug 2026', label: 'Data current' },
+  { value: 'Sep 2026', label: 'Data current' },
 ]
 
 export default function HomePage() {
@@ -28,7 +28,7 @@ export default function HomePage() {
 
         <div className="relative z-10 mx-auto max-w-6xl px-5 py-12 sm:py-20 md:py-28 text-center">
           <span className="inline-block text-[0.68rem] font-bold tracking-[0.16em] uppercase text-gold border border-gold/35 px-3 py-1 rounded-sm mb-6">
-            Aug 2026 &middot; Squamish, BC
+            Sep 2026 &middot; Squamish, BC
           </span>
 
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.12] mb-6 max-w-3xl mx-auto">
@@ -121,17 +121,17 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl">
           <p className="text-[0.68rem] font-bold tracking-[0.16em] uppercase text-gold mb-4">Market Intelligence</p>
           <div className="w-11 h-0.5 bg-gold mb-5" aria-hidden="true" />
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-forest mb-4">August 2026 Market Overview</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-forest mb-4">September 2026 Market Overview</h2>
           <p className="text-muted leading-relaxed max-w-xl mb-12">
             The Sea-to-Sky corridor remains one of BC&apos;s most compelling value plays — meaningful savings over Vancouver with direct access to world-class outdoor recreation.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {[
-              { val: '$1.59M', lbl: 'Average SFH price', tag: 'Aug 2026 benchmark' },
-              { val: '27%', lbl: 'Detached sales growth', tag: 'YoY, Aug 2026' },
+              { val: '$1.61M', lbl: 'Average SFH price', tag: 'Sep 2026 benchmark' },
+              { val: '-34%', lbl: 'Squamish sales activity', tag: 'YoY, Sep 2026' },
               { val: '9 days', lbl: 'Fastest DOM (Downtown)', tag: 'High demand' },
-              { val: '~11%', lbl: 'Savings vs. Vancouver detached', tag: 'Comparable homes' },
+              { val: '~10%', lbl: 'Savings vs. Vancouver detached', tag: 'Comparable homes' },
             ].map((s) => (
               <div key={s.val} className="bg-cream border border-forest/10 rounded-sm p-4 sm:p-5">
                 <div className="font-display text-xl sm:text-2xl font-bold text-forest mb-1">{s.val}</div>
@@ -195,7 +195,7 @@ export default function HomePage() {
               },
               {
                 q: 'What is the average house price in Squamish in 2026?',
-                a: 'As of August 2026, the average single-family home benchmark price in Squamish is $1.59M — approximately 11% less than the comparable detached benchmark in Vancouver. Detached home sales are up 27% year-over-year, with some neighbourhoods averaging just 9 days on market.',
+                a: 'As of September 2026, the average single-family home benchmark price in Squamish is $1.61M — approximately 10% less than the comparable detached benchmark in Vancouver. Squamish sales activity is down 34% year-over-year amid a broader market slowdown, with some neighbourhoods averaging just 9 days on market.',
               },
               {
                 q: 'Which Squamish neighbourhood is closest to Vancouver?',
@@ -207,7 +207,7 @@ export default function HomePage() {
               },
               {
                 q: 'Is Squamish a good place to buy real estate in 2026?',
-                a: 'Yes. Squamish still offers compelling value relative to Vancouver — detached homes are about 11% less expensive on a benchmark-price basis — with direct access to world-class outdoor recreation and a growing community. August 2026 data shows detached sales activity up 27% year-over-year.',
+                a: 'Yes. Squamish still offers compelling value relative to Vancouver — detached homes are about 10% less expensive on a benchmark-price basis — with direct access to world-class outdoor recreation and a growing community. September 2026 data shows a cooling, buyer-friendly market, with sales activity down 34% year-over-year.',
               },
               {
                 q: 'What is the most expensive neighbourhood in Squamish?',
